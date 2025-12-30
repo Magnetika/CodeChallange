@@ -122,6 +122,7 @@ class BetServiceTest {
 
     @Test
     void testPlaceBet_WithValidBet_ShouldSaveBet() {
+        testJackpot.setWinProbability(0.0); // Force no win
         when(jackpotRepository.findById(jackpotId)).thenReturn(Optional.of(testJackpot));
         when(betRepository.save(any(Bet.class))).thenAnswer(invocation -> invocation.getArgument(0));
 
@@ -133,6 +134,7 @@ class BetServiceTest {
 
     @Test
     void testPlaceBet_ShouldIncreaseJackpotSize() {
+        testJackpot.setWinProbability(0.0); // Force no win
         when(jackpotRepository.findById(jackpotId)).thenReturn(Optional.of(testJackpot));
         when(betRepository.save(any(Bet.class))).thenAnswer(invocation -> invocation.getArgument(0));
 
