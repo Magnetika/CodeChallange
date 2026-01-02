@@ -3,6 +3,7 @@ package com.example.jackpot.service;
 import com.example.jackpot.dto.CreateJackpotRequest;
 import com.example.jackpot.dto.JackpotDto;
 import com.example.jackpot.entity.Jackpot;
+import com.example.jackpot.exception.JackpotNotFoundException;
 import com.example.jackpot.repository.JackpotRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -238,7 +239,7 @@ class JackpotServiceTest {
         UUID invalidId = UUID.randomUUID();
         when(jackpotRepository.findById(invalidId)).thenReturn(Optional.empty());
 
-        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
+        JackpotNotFoundException exception = assertThrows(JackpotNotFoundException.class, () -> {
             jackpotService.getJackpotById(invalidId);
         });
 
@@ -250,7 +251,7 @@ class JackpotServiceTest {
         UUID invalidId = UUID.randomUUID();
         when(jackpotRepository.findById(invalidId)).thenReturn(Optional.empty());
 
-        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
+        JackpotNotFoundException exception = assertThrows(JackpotNotFoundException.class, () -> {
             jackpotService.getJackpotById(invalidId);
         });
 

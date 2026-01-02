@@ -44,21 +44,23 @@ public class GlobalExceptionHandler {
     }
 
     /**
- */
-@ExceptionHandler(JackpotNotFoundException.class)
-public ResponseEntity<ErrorResponse> handleJackpotNotFound(JackpotNotFoundException ex) {
-    ErrorResponse errorResponse = ErrorResponse.builder()
-            .status(HttpStatus.NOT_FOUND.value())
-            .message(ex.getMessage())
-            .error("NOT_FOUND")
-            .timestamp(LocalDateTime.now().format(formatter))
-            .build();
+     * Handle jackpot not found situations with 404.
+     */
+    @ExceptionHandler(JackpotNotFoundException.class)
+    public ResponseEntity<ErrorResponse> handleJackpotNotFound(JackpotNotFoundException ex) {
+        ErrorResponse errorResponse = ErrorResponse.builder()
+                .status(HttpStatus.NOT_FOUND.value())
+                .message(ex.getMessage())
+                .error("NOT_FOUND")
+                .timestamp(LocalDateTime.now().format(formatter))
+                .build();
 
-    return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorResponse);
-}
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorResponse);
+    }
 
-/**
- * Handle IllegalArgumentException (invalid input, etc.)
+    /**
+     * Handle IllegalArgumentException (invalid input, etc.)
+     */
     @ExceptionHandler(IllegalArgumentException.class)
     public ResponseEntity<ErrorResponse> handleIllegalArgumentException(IllegalArgumentException ex) {
         ErrorResponse errorResponse = ErrorResponse.builder()

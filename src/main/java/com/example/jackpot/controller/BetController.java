@@ -6,6 +6,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import jakarta.validation.Valid;
+
 import com.example.jackpot.dto.BetRequest;
 import com.example.jackpot.dto.BetResponse;
 import com.example.jackpot.service.BetService;
@@ -41,7 +43,7 @@ public class BetController {
             content = @Content(schema = @Schema(implementation = BetResponse.class)))
     @ApiResponse(responseCode = "400", description = "Invalid bet request")
     @ApiResponse(responseCode = "404", description = "Jackpot not found")
-    public ResponseEntity<BetResponse> placeBet(@RequestBody BetRequest request) {
+    public ResponseEntity<BetResponse> placeBet(@Valid @RequestBody BetRequest request) {
         BetResponse response = betService.placeBet(request);
         return ResponseEntity.ok(response);
     }
