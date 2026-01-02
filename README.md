@@ -38,6 +38,13 @@ PostgreSQL connection details (update in `src/main/resources/application.propert
 - Username: `jackpot`
 - Password: `jackpot`
 
+### Testing
+
+```bash
+# Run all unit and integration tests (H2 in-memory)
+mvn test
+```
+
 ## API Endpoints
 
 ### 1. Create a Jackpot
@@ -181,6 +188,7 @@ GET /api/wins?limit=10&offset=0
 - [x] Clean layered architecture (Controller → Service → Repository)
 - [x] Exception handling with consistent error responses
 - [x] DTOs for API contracts
+- [x] Unit and integration tests (services + controllers), runnable with `mvn test`
 
 ## Production Considerations
 
@@ -190,7 +198,7 @@ GET /api/wins?limit=10&offset=0
 - Enable authentication/authorization
 - Use secrets management for database credentials
 
-**Testing**: Unit and integration tests should be added before production use.
+**Testing**: Unit and integration tests are included; run with `mvn test`.
 
 ## Project Structure
 
