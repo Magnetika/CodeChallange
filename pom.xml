@@ -12,20 +12,7 @@
 	<artifactId>jackpot</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>jackpot</name>
-	<description>Demo project for Spring Boot</description>
-	<url/>
-	<licenses>
-		<license/>
-	</licenses>
-	<developers>
-		<developer/>
-	</developers>
-	<scm>
-		<connection/>
-		<developerConnection/>
-		<tag/>
-		<url/>
-	</scm>
+	<description>Jackpot service with bets and wins</description>
 	<properties>
 		<java.version>17</java.version>
 	</properties>
@@ -103,7 +90,4 @@
 			</plugin>
 		</plugins>
 	</build>
-	<repositories/>
-	<pluginRepositories/>
-
 </project>
