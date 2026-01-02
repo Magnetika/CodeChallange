@@ -21,6 +21,7 @@ import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 
 /**
@@ -45,7 +46,7 @@ public class JackpotController {
     @Operation(summary = "Create a new jackpot", description = "Creates a new jackpot with specified name and win probability")
     @ApiResponse(responseCode = "201", description = "Jackpot created successfully",
             content = @Content(schema = @Schema(implementation = JackpotDto.class)))
-    public ResponseEntity<JackpotDto> createJackpot(@RequestBody CreateJackpotRequest request) {
+    public ResponseEntity<JackpotDto> createJackpot(@Valid @RequestBody CreateJackpotRequest request) {
         JackpotDto jackpot = jackpotService.createJackpot(request);
         return ResponseEntity.status(HttpStatus.CREATED).body(jackpot);
     }

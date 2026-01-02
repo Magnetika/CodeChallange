@@ -3,6 +3,7 @@ package com.example.jackpot.service;
 import com.example.jackpot.dto.JackpotDto;
 import com.example.jackpot.dto.CreateJackpotRequest;
 import com.example.jackpot.entity.Jackpot;
+import com.example.jackpot.exception.JackpotNotFoundException;
 import com.example.jackpot.repository.JackpotRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -62,7 +63,7 @@ public class JackpotService {
     @Transactional(readOnly = true)
     public JackpotDto getJackpotById(UUID jackpotId) {
         Jackpot jackpot = jackpotRepository.findById(jackpotId)
-                .orElseThrow(() -> new IllegalArgumentException("Jackpot not found with ID: " + jackpotId));
+                .orElseThrow(() -> new JackpotNotFoundException("Jackpot not found with ID: " + jackpotId));
         return mapToDto(jackpot);
     }
 
